@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 import trimesh
 
-from diffuser_gen.geometry import build_diffuser
+from diffuser_gen.geometry import build_diffuser, build_diffuser_manifold
 from diffuser_gen.qrd import height_map_2d
 
 DEFAULT_PARAMS = {
@@ -96,3 +96,9 @@ def test_column_center_position():
     assert abs(center[0] - expected_cx) < 1e-6
     assert abs(center[1] - expected_cy) < 1e-6
     assert abs(center[2] - expected_cz) < 1e-6
+
+
+def test_manifold_builder_is_watertight():
+    mesh = build_diffuser_manifold(DEFAULT_PARAMS)
+    assert isinstance(mesh, trimesh.Trimesh)
+    assert mesh.is_watertight
