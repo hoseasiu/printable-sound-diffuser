@@ -1,0 +1,23 @@
+[project]
+name = "diffuser-gen"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "trimesh",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+3mf = ["lxml"]
+preview = ["pyglet<2"]
+
+[project.scripts]
+diffuser-gen = "diffuser_gen.cli:main"
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["diffuser_gen*"]
