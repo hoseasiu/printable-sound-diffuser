@@ -10,7 +10,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest"]
 3mf = ["lxml"]
-preview = ["pyglet<2"]
+preview = ["pyglet<2", "scipy"]
 
 [project.scripts]
 diffuser-gen = "diffuser_gen.cli:main"
