@@ -7,7 +7,7 @@ Generate a 3D-printable 2D skyline QRD (Quadratic Residue Diffuser) acoustic pan
 ## Quickstart
 
 ```
-pip install -e .[dev,3mf]
+pip install -e .[dev,3mf,preview]
 python generate.py --p-x 7 --p-y 7 --f-design 1000 --output panel
 ```
 
@@ -46,7 +46,7 @@ The panel diffuses frequencies in the band **1000 – 6236 Hz**. The warning fla
 | `--manifold` | flag | Use single watertight heightfield mesh |
 | `--format` | `stl` | Output format: `stl` or `3mf` |
 | `--output` | `diffuser` | Output filename (extension replaced automatically) |
-| `--preview` | flag | Open interactive 3D viewer before export |
+| `--preview` | flag | Open interactive 3D viewer before export (requires `pip install -e .[preview]`) |
 
 ## How it works
 
