@@ -104,7 +104,7 @@ Algorithm:
      - `z = base_thickness_mm + H[i, j] / 2`
    - Append to a list of column meshes.
 6. Concatenate base + columns via `trimesh.util.concatenate()`.
-7. Run `mesh.merge_vertices()` and `mesh.remove_duplicate_faces()`. Sliders for FDM accept this output; the watertight test (see below) is a best-effort assertion, not a hard requirement.
+7. Run `mesh.process()` (trimesh 4.x; equivalent to merge-vertices + dedup in one call). Slicers for FDM accept this output; the watertight test (see below) is a best-effort assertion, not a hard requirement.
 
 If you need a strictly manifold mesh (e.g. for resin printing or boolean ops downstream), provide an opt-in path:
 
