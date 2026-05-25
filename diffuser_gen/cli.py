@@ -56,6 +56,7 @@ def main(argv: list[str] | None = None) -> None:
     feasibility.print_summary(s)
 
     if args.preview:
+        geometry.color_by_height(mesh)
         mesh.show()
 
     path = export.export(mesh, args.output, args.fmt)

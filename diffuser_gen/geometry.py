@@ -149,3 +149,16 @@ def build_diffuser_manifold(params: dict) -> trimesh.Trimesh:
     )
     mesh.merge_vertices()
     return mesh
+
+
+def color_by_height(mesh: trimesh.Trimesh) -> None:
+    """Color mesh faces by Z height: blue (base) → green → red (peaks)."""
+    z = mesh.triangles_center[:, 2]
+    z_min, z_max = float(z.min()), float(z.max())
+    t = (z - z_min) / (z_max - z_min) if z_max > z_min else np.zeros(len(z))
+    stops = [0.0, 0.25, 0.5, 0.75, 1.0]
+    r = np.interp(t, stops, [  0,   0,   0, 255, 220])
+    g = np.interp(t, stops, [  0, 127, 200, 200,   0])
+    b = np.interp(t, stops, [178, 255, 100,   0,   0])
+    rgba = np.column_stack([r, g, b, np.full(len(t), 255)]).astype(np.uint8)
+    mesh.visual.face_colors = rgba
